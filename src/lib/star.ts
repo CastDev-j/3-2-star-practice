@@ -47,6 +47,7 @@ export class Star {
     const basicMaterial = new THREE.MeshBasicMaterial({
       color: this.color,
       wireframe: this.wireframe,
+      side: THREE.DoubleSide,
     });
 
     this.mesh = new THREE.Mesh(geometry, basicMaterial);
@@ -55,7 +56,7 @@ export class Star {
 
   private getVertices(): THREE.BufferAttribute {
     const halfSize = this.size / 2;
-    const vertices = [];
+    const vertices = [0, 0, 0];
     for (let i = 0; i < this.points * 2; i++) {
       const xOutterPosition =
         Math.cos((i / this.points) * 2 * Math.PI) * halfSize;
@@ -80,12 +81,12 @@ export class Star {
   }
 
   private getIndices(): THREE.BufferAttribute {
-    const indices = [];
+    const indices = [0];
+    const centerIndex = 0;
 
     for (let i = 0; i < this.points * 2; i++) {
-      const currentIndex = i;
-      const nextIndex = (i + 1) % (this.points * 2);
-      const centerIndex = this.points * 4;
+      const currentIndex = i + 1;
+      const nextIndex = ((i + 1) % (this.points * 2)) + 1;
 
       indices.push(currentIndex, nextIndex, centerIndex);
     }

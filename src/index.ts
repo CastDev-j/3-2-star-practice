@@ -2,7 +2,7 @@ import "../global.css";
 import GUI from "lil-gui";
 import * as THREE from "three";
 import { Renderer } from "./lib/renderer";
-import { Star } from "./lib/start";
+import { Star } from "./lib/star";
 
 const canvas = document.getElementById("webgl-canvas") as HTMLCanvasElement;
 if (!canvas) {
