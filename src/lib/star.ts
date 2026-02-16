@@ -81,7 +81,7 @@ export class Star {
   }
 
   private getIndices(): THREE.BufferAttribute {
-    const indices = [0];
+    const indices = [];
     const centerIndex = 0;
 
     for (let i = 0; i < this.points * 2; i++) {
